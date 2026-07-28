@@ -1,37 +1,59 @@
-/* Estilos Gerais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    color: #333;
-    background-color: #f8f9fa;
-    line-height: 1.6;
-}
-
 /* Cabeçalho */
-header {
-    background-color: #1e293b;
-    color: #fff;
-    padding: 1rem 5%;
+.app-header {
+    background-color: #0f172a; /* Azul escuro profundo */
+    color: #ffffff;
+    padding: 0.8rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    font-size: 1.5rem;
+/* Container da Logo e Nome */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espaço entre a imagem e o texto */
+}
+
+/* Ajuste do tamanho do arquivo escola.png */
+.app-logo {
+    height: 40px; /* Altura ideal para barra de navegação */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Texto do Nome do Aplicativo */
+.app-title {
+    font-size: 1.4rem;
     font-weight: 700;
+    color: #ffffff;
 }
 
-.logo span {
-    color: #38bdf8;
+/* Destaque para o "Paraná" */
+.app-title span {
+    color: #38bdf8; /* Tom de azul claro do logotipo original */
+}
+
+/* Menu de Navegação */
+.app-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.app-nav a {
+    color: #94a3b8; /* Cor neutra para links inativos */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.app-nav a:hover {
+    color: #38bdf8; /* Cor de destaque ao passar o mouse */
 }
 
 nav ul {
