@@ -1,36 +1,21 @@
-<<<<<<< HEAD
-<header class="app-header">
-    <div class="logo-container">
-        <img src="escola.png" alt="Logotipo Escola Paraná" class="app-logo">
-        <h1 class="app-title">Escola <span>Paraná</span></h1>
-    </div>
-    <nav class="app-nav">
-        <ul>
-            <li><a href="#materias">Matérias</a></li>
-            <li><a href="#agendamentos">Agendamentos</a></li>
-            <li><a href="#notas">Notas</a></li>
-            <li><a href="#duvidas">Tirar Dúvidas</a></li>
-        </ul>
-    </nav>
-</header>
-=======
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escola+</title>
+    <title>Escola Paraná Hub</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
->>>>>>> 32ac2c68990c606c0cfc280419b9962f8183d45c
 
-<<<<<<< HEAD
-=======
-    <header>
-        <div class="logo">Escola<span>+</span></div>
-        <nav>
+    <!-- Cabeçalho Institucional -->
+    <header class="app-header">
+        <div class="logo-container">
+            <img src="escola.png" alt="Logotipo Escola Paraná" class="app-logo">
+            <h1 class="app-title">Escola <span>Paraná</span></h1>
+        </div>
+        <nav class="app-nav">
             <ul>
                 <li><a href="#materias">Matérias</a></li>
                 <li><a href="#notas">Notas</a></li>
@@ -39,89 +24,113 @@
         </nav>
     </header>
 
->>>>>>> 32ac2c68990c606c0cfc280419b9962f8183d45c
+    <!-- Seção Hero Principal -->
     <section class="hero">
-        <h1>Conectando Alunos e Professores para o Futuro</h1>
-        <p>Inovação, Empreendedorismo, Back-end e Bancos de Dados em uma plataforma simples e eficiente.</p>
-        <a href="#duvidas" class="btn">Tirar uma Dúvida Agora</a>
+        <div class="hero-content">
+            <h1>Conectando Alunos e Professores para o Futuro</h1>
+            <p>Inovação, Empreendedorismo, Back-end e Bancos de Dados em uma plataforma simples e eficiente.</p>
+            <a href="#duvidas" class="btn btn-hero">Tirar uma Dúvida Agora</a>
+        </div>
     </section>
 
+    <!-- Trilha de Aprendizado -->
     <section id="materias" class="container">
         <h2>Trilha de Aprendizado Tecnológico</h2>
         <div class="cards-grid">
             <div class="card">
-                <h3>💡 Inovação & Empreendedorismo</h3>
+                <div class="card-icon">💡</div>
+                <h3>Inovação & Empreendedorismo</h3>
                 <p>Criação de startups, validação de ideias, metodologias ágeis e resolução criativa de problemas reais.</p>
             </div>
             <div class="card">
-                <h3>⚙️ Desenvolvimento Back-End</h3>
+                <div class="card-icon">⚙️</div>
+                <h3>Desenvolvimento Back-End</h3>
                 <p>Lógica de programação, APIs RESTful, servidores, segurança e regras de negócio para sistemas web.</p>
             </div>
             <div class="card">
-                <h3>🗄️ Banco de Dados</h3>
+                <div class="card-icon">🗄️</div>
+                <h3>Banco de Dados</h3>
                 <p>Modelagem de dados (DER), comandos SQL, gerenciamento de dados relacionais e não-relacionais.</p>
             </div>
         </div>
     </section>
 
+    <!-- Painel de Notas Trimestrais -->
     <section id="notas" class="container">
         <h2>📊 Painel de Notas e Frequência</h2>
-        <table class="tabela-notas">
-            <thead>
-                <tr>
-                    <th>Matéria</th>
-                    <th>Nota 1º Bi</th>
-                    <th>Nota 2º Bi</th>
-                    <th>Frequência</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Inovação e Empreendedorismo</td>
-                    <td>9.5</td>
-                    <td>9.0</td>
-                    <td>98%</td>
-                    <td><span class="status aprovado">Aprovado</span></td>
-                </tr>
-                <tr>
-                    <td>Desenvolvimento Back-End</td>
-                    <td>8.0</td>
-                    <td>8.5</td>
-                    <td>92%</td>
-                    <td><span class="status aprovado">Aprovado</span></td>
-                </tr>
-                <tr>
-                    <td>Banco de Dados</td>
-                    <td>7.5</td>
-                    <td>8.0</td>
-                    <td>95%</td>
-                    <td><span class="status aprovado">Aprovado</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="tabela-notas">
+                <thead>
+                    <tr>
+                        <th>Matéria</th>
+                        <th>1º Tri</th>
+                        <th>2º Tri</th>
+                        <th>3º Tri</th>
+                        <th>Frequência</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Inovação e Empreendedorismo</strong></td>
+                        <td>9.5</td>
+                        <td>9.0</td>
+                        <td>-</td>
+                        <td>98%</td>
+                        <td><span class="status cursando">Cursando</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desenvolvimento Back-End</strong></td>
+                        <td>8.0</td>
+                        <td>8.5</td>
+                        <td>-</td>
+                        <td>92%</td>
+                        <td><span class="status cursando">Cursando</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Banco de Dados</strong></td>
+                        <td>7.5</td>
+                        <td>8.0</td>
+                        <td>-</td>
+                        <td>95%</td>
+                        <td><span class="status cursando">Cursando</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
-    <section id="duvidas" class="container bg-light">
+    <!-- Canal Direto de Dúvidas (Estilo WebChat) -->
+    <section id="duvidas" class="container">
         <h2>💬 Canal Direto de Dúvidas</h2>
         <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-avatar">🎓</div>
+                <div>
+                    <h4>Suporte Pedagógico</h4>
+                    <span class="chat-status">Online</span>
+                </div>
+            </div>
             <div class="chat-box">
                 <div class="mensagem professor">
-                    <strong>Prof. lindao (Back-End):</strong> Olá! Alguma dúvida sobre a criação de rotas na API?
+                    <span class="chat-name">Prof. Lindo (Back-End)</span>
+                    <p>Olá! Alguma dúvida sobre a criação de rotas na API?</p>
                 </div>
                 <div class="mensagem aluno">
-                    <strong>Você:</strong> Professor, como faço para conectar o banco SQL no Node.js?
+                    <span class="chat-name">Você</span>
+                    <p>Professor, como faço para conectar o banco SQL no Node.js?</p>
                 </div>
             </div>
             <div class="chat-input">
                 <input type="text" placeholder="Digite sua dúvida aqui...">
-                <button class="btn">Enviar</button>
+                <button class="btn btn-send">Enviar</button>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 escola+ Hub - Projeto Escolar de Inovação & Tecnologia</p>
+    <!-- Rodapé -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Escola Paraná Hub - Projeto Escolar de Inovação & Tecnologia</p>
     </footer>
 
 </body>
