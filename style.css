@@ -8,6 +8,8 @@
     --text-muted: #64748b;
     --bg-body: #f8fafc;
     --white: #ffffff;
+    --success: #10b981;
+    --danger: #ef4444;
 }
 
 * {
@@ -134,15 +136,26 @@ body {
     margin: 0 auto;
 }
 
+.bg-light-section {
+    background-color: #f1f5f9;
+    border-radius: 16px;
+}
+
+.section-instruction {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
 h2 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: var(--primary);
     text-align: center;
-    position: relative;
 }
 
-/* Cards de Matérias */
+/* Cards de Matérias com Features */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -153,9 +166,11 @@ h2 {
     background: var(--white);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 10px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-top: 4px solid var(--accent);
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -176,9 +191,33 @@ h2 {
 .card p {
     color: var(--text-muted);
     font-size: 0.95rem;
+    margin-bottom: 1rem;
 }
 
-/* Painel de Notas Responsivo */
+.card-features {
+    list-style: none;
+    margin-top: auto;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+}
+
+.card-features li {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-features li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Painel de Notas */
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -213,7 +252,66 @@ h2 {
     font-weight: 600;
 }
 
-/* Chat de Dúvidas Avançado */
+/* Componente de Abas para Frequência */
+.freq-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: var(--white);
+    border: 1px solid #cbd5e1;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+}
+
+/* Lista / Grid de Frequência Diária */
+.timeline-frequencia {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.freq-item {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    border-left: 4px solid transparent;
+}
+
+.freq-item.presenca { border-left-color: var(--success); }
+.freq-item.falta { border-left-color: var(--danger); }
+
+.freq-info h4 { font-size: 0.9rem; color: var(--primary); }
+.freq-info span { font-size: 0.8rem; color: var(--text-muted); }
+
+.badge-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.presenca .badge-status { background: #d1fae5; color: #065f46; }
+.falta .badge-status { background: #fee2e2; color: #991b1b; }
+
+/* Chat de Dúvidas */
 .chat-container {
     max-width: 650px;
     margin: 0 auto;
@@ -262,6 +360,12 @@ h2 {
     border-radius: 12px;
     max-width: 75%;
     box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    animation: msgFade 0.3s ease-out;
+}
+
+@keyframes msgFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .chat-name {
@@ -302,10 +406,6 @@ h2 {
     font-size: 0.95rem;
 }
 
-.chat-input input:focus {
-    border-color: var(--accent);
-}
-
 /* Rodapé */
 .app-footer {
     text-align: center;
@@ -316,7 +416,6 @@ h2 {
     font-size: 0.9rem;
 }
 
-/* Responsividade Mobile */
 @media (max-width: 768px) {
     .app-header { flex-direction: column; gap: 16px; text-align: center; }
     .hero h1 { font-size: 2rem; }

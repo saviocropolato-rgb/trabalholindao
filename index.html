@@ -19,6 +19,7 @@
             <ul>
                 <li><a href="#materias">Matérias</a></li>
                 <li><a href="#notas">Notas</a></li>
+                <li><a href="#frequencia-detalhada">Frequência</a></li>
                 <li><a href="#duvidas">Tirar Dúvidas</a></li>
             </ul>
         </nav>
@@ -33,7 +34,7 @@
         </div>
     </section>
 
-    <!-- Trilha de Aprendizado -->
+    <!-- Trilha de Aprendizado Avançada -->
     <section id="materias" class="container">
         <h2>Trilha de Aprendizado Tecnológico</h2>
         <div class="cards-grid">
@@ -41,16 +42,31 @@
                 <div class="card-icon">💡</div>
                 <h3>Inovação & Empreendedorismo</h3>
                 <p>Criação de startups, validação de ideias, metodologias ágeis e resolução criativa de problemas reais.</p>
+                <ul class="card-features">
+                    <li>Pitch de Negócios</li>
+                    <li>Modelagem Canvas</li>
+                    <li>Cultura Lean & MVP</li>
+                </ul>
             </div>
             <div class="card">
                 <div class="card-icon">⚙️</div>
                 <h3>Desenvolvimento Back-End</h3>
                 <p>Lógica de programação, APIs RESTful, servidores, segurança e regras de negócio para sistemas web.</p>
+                <ul class="card-features">
+                    <li>Node.js e Express</li>
+                    <li>Autenticação JWT</li>
+                    <li>Arquitetura de APIs</li>
+                </ul>
             </div>
             <div class="card">
                 <div class="card-icon">🗄️</div>
                 <h3>Banco de Dados</h3>
                 <p>Modelagem de dados (DER), comandos SQL, gerenciamento de dados relacionais e não-relacionais.</p>
+                <ul class="card-features">
+                    <li>Consultas Otimizadas</li>
+                    <li>PostgreSQL & MySQL</li>
+                    <li>NoSQL com MongoDB</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -66,7 +82,7 @@
                         <th>1º Tri</th>
                         <th>2º Tri</th>
                         <th>3º Tri</th>
-                        <th>Frequência</th>
+                        <th>Frequência Geral</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -100,6 +116,23 @@
         </div>
     </section>
 
+    <!-- Nova Seção: Frequência Diária Detalhada -->
+    <section id="frequencia-detalhada" class="container bg-light-section">
+        <h2>📅 Histórico Diário de Presenças e Faltas</h2>
+        <p class="section-instruction">Selecione uma disciplina para checar o calendário de chamadas:</p>
+        
+        <div class="freq-tabs">
+            <button class="tab-btn active" onclick="filtrarFrequencia('all')">Todas</button>
+            <button class="tab-btn" onclick="filtrarFrequencia('inovacao')">Inovação</button>
+            <button class="tab-btn" onclick="filtrarFrequencia('backend')">Back-End</button>
+            <button class="tab-btn" onclick="filtrarFrequencia('banco')">Banco de Dados</button>
+        </div>
+
+        <div class="timeline-frequencia" id="timelineFrequencia">
+            <!-- Os registros de presença/falta serão renderizados dinamicamente via JS -->
+        </div>
+    </section>
+
     <!-- Canal Direto de Dúvidas (Estilo WebChat) -->
     <section id="duvidas" class="container">
         <h2>💬 Canal Direto de Dúvidas</h2>
@@ -111,7 +144,8 @@
                     <span class="chat-status">Online</span>
                 </div>
             </div>
-            <div class="chat-box">
+            
+            <div class="chat-box" id="chatBox">
                 <div class="mensagem professor">
                     <span class="chat-name">Prof. Lindo (Back-End)</span>
                     <p>Olá! Alguma dúvida sobre a criação de rotas na API?</p>
@@ -121,9 +155,10 @@
                     <p>Professor, como faço para conectar o banco SQL no Node.js?</p>
                 </div>
             </div>
+            
             <div class="chat-input">
-                <input type="text" placeholder="Digite sua dúvida aqui...">
-                <button class="btn btn-send">Enviar</button>
+                <input type="text" id="chatInputField" placeholder="Digite sua dúvida aqui..." onkeypress="verificarTecla(event)">
+                <button class="btn btn-send" onclick="enviarMensagem()">Enviar</button>
             </div>
         </div>
     </section>
@@ -133,5 +168,7 @@
         <p>&copy; 2026 Escola Paraná Hub - Projeto Escolar de Inovação & Tecnologia</p>
     </footer>
 
+    <!-- Script de Lógica do Front-End -->
+    <script src="script.js"></script>
 </body>
 </html>
