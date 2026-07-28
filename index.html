@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTech Hub | Plataforma Escolar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header>
+        <div class="logo">EduTech<span>Hub</span></div>
+        <nav>
+            <ul>
+                <li><a href="#materias">Matérias</a></li>
+                <li><a href="#agendamentos">Agendamentos</a></li>
+                <li><a href="#notas">Notas</a></li>
+                <li><a href="#duvidas">Tirar Dúvidas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Conectando Alunos e Professores para o Futuro</h1>
+        <p>Inovação, Empreendedorismo, Back-end e Bancos de Dados em uma plataforma simples e eficiente.</p>
+        <a href="#duvidas" class="btn">Tirar uma Dúvida Agora</a>
+    </section>
+
+    <section id="materias" class="container">
+        <h2>Trilha de Aprendizado Tecnológico</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3>💡 Inovação & Empreendedorismo</h3>
+                <p>Criação de startups, validação de ideias, metodologias ágeis e resolução criativa de problemas reais.</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ Desenvolvimento Back-End</h3>
+                <p>Lógica de programação, APIs RESTful, servidores, segurança e regras de negócio para sistemas web.</p>
+            </div>
+            <div class="card">
+                <h3>🗄️ Banco de Dados</h3>
+                <p>Modelagem de dados (DER), comandos SQL, gerenciamento de dados relacionais e não-relacionais.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="agendamentos" class="container bg-light">
+        <h2>📅 Agendamento de Monitorias</h2>
+        <div class="form-box">
+            <form>
+                <div class="input-group">
+                    <label for="materia">Escolha a Matéria:</label>
+                    <select id="materia">
+                        <option>Inovação e Empreendedorismo</option>
+                        <option>Desenvolvimento Back-End</option>
+                        <option>Banco de Dados</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="data">Data do Agendamento:</label>
+                    <input type="date" id="data">
+                </div>
+                <div class="input-group">
+                    <label for="horario">Horário:</label>
+                    <input type="time" id="horario">
+                </div>
+                <button type="button" class="btn">Confirmar Agendamento</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="notas" class="container">
+        <h2>📊 Painel de Notas e Frequência</h2>
+        <table class="tabela-notas">
+            <thead>
+                <tr>
+                    <th>Matéria</th>
+                    <th>Nota 1º Bi</th>
+                    <th>Nota 2º Bi</th>
+                    <th>Frequência</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inovação e Empreendedorismo</td>
+                    <td>9.5</td>
+                    <td>9.0</td>
+                    <td>98%</td>
+                    <td><span class="status aprovado">Aprovado</span></td>
+                </tr>
+                <tr>
+                    <td>Desenvolvimento Back-End</td>
+                    <td>8.0</td>
+                    <td>8.5</td>
+                    <td>92%</td>
+                    <td><span class="status aprovado">Aprovado</span></td>
+                </tr>
+                <tr>
+                    <td>Banco de Dados</td>
+                    <td>7.5</td>
+                    <td>8.0</td>
+                    <td>95%</td>
+                    <td><span class="status aprovado">Aprovado</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="duvidas" class="container bg-light">
+        <h2>💬 Canal Direto de Dúvidas</h2>
+        <div class="chat-container">
+            <div class="chat-box">
+                <div class="mensagem professor">
+                    <strong>Prof. Carlos (Back-End):</strong> Olá! Alguma dúvida sobre a criação de rotas na API?
+                </div>
+                <div class="mensagem aluno">
+                    <strong>Você:</strong> Professor, como faço para conectar o banco SQL no Node.js?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Digite sua dúvida aqui...">
+                <button class="btn">Enviar</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 EduTech Hub - Projeto Escolar de Inovação & Tecnologia</p>
+    </footer>
+
+</body>
+</html>
