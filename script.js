@@ -87,3 +87,82 @@ function verificarTecla(event) {
     }
 }
 
+// Banco de dados de respostas (Base de Conhecimento da IA)
+const bancoRespostas = [
+    {
+        palavrasChave: ["banco", "sql", "conectar", "database"],
+        resposta: "Para conectar um banco SQL no Node.js, você pode usar o **Sequelize** (ORM) ou o driver nativo **pg** (PostgreSQL) / **mysql2**. Você já instalou o pacote via npm?"
+    },
+    {
+        palavrasChave: ["rota", "rotas", "get", "post", "endpoint"],
+        resposta: "As rotas no Express são criadas usando `app.get('/rota', callback)` ou `app.post()`. Lembre-se de passar os parâmetros `req` e `res` na função!"
+    },
+    {
+        palavrasChave: ["erro", "bug", "funcionando", "quebrou"],
+        resposta: "Vixi! Dá uma olhada no terminal. Qual é a mensagem de erro exata que está aparecendo por aí?"
+    },
+    {
+        palavrasChave: ["oi", "olá", "bom dia", "boa tarde", "ajuda"],
+        resposta: "Olá! Sou o assistente do Prof. Lindo. Pode mandar sua dúvida sobre Node.js, Express ou Banco de Dados!"
+    }
+];
+
+// Resposta padrão caso a IA não entenda
+const respostaPadrao = "Não consegui entender muito bem. Tente usar palavras como 'banco', 'rotas' ou 'erro' para eu te ajudar!";
+
+// Função principal para enviar a mensagem do aluno
+function enviarMensagem() {
+    const input = document.getElementById("chatInputField");
+    const textoMensagem = input.value.trim();
+
+    if (textoMensagem === "") return;
+
+    // 1. Renderiza a mensagem do aluno
+    criarMensagemHTML(textoMensagem, "aluno", "Você");
+    input.value = ""; // Limpa o campo
+
+    // 2. Simula o "Digitando..." do Professor IA após 1 segundo
+    setTimeout(() => {
+        const respostaIA = processarRespostaIA(textoMensagem);
+        criarMensagemHTML(respostaIA, "professor", "Prof. Lindo (IA)");
+    }, 1000);
+}
+
+// Função que busca a melhor resposta baseada em palavras-chave
+function processarRespostaIA(mensagemUsuario) {
+    const mensagemMinuscula = mensagemUsuario.toLowerCase();
+
+    for (const item of bancoRespostas) {
+        // Verifica se alguma palavra-chave está contida na frase do usuário
+        const encontrouPalavra = item.palavrasChave.some(palavra => mensagemMinuscula.includes(palavra));
+        if (encontrouPalavra) {
+            return item.resposta;
+        }
+    }
+    return respostaPadrao;
+}
+
+// Função auxiliar para injetar a mensagem na tela e rolar o chat
+function criarMensagemHTML(texto, remetente, nomeExibicao) {
+    const chatBox = document.getElementById("chatBox");
+
+    const novaMensagem = document.createElement("div");
+    novaMensagem.className = `mensagem ${remetente}`;
+
+    novaMensagem.innerHTML = `
+        <span class="chat-name">${nomeExibicao}</span>
+        <p>${texto}</p>
+    `;
+
+    chatBox.appendChild(novaMensagem);
+    
+    // Rola o chat para a última mensagem automaticamente
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Permite enviar a mensagem ao pressionar "Enter"
+function verificarTecla(event) {
+    if (event.key === "Enter") {
+        enviarMensagem();
+    }
+}
