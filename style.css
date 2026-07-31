@@ -47,13 +47,13 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    border-radius: 15px;
 }
 
 .app-logo {
     height: 38px;
     width: auto;
     object-fit: contain;
+    border-radius: 15px;
 }
 
 .app-title {
