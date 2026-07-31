@@ -1,4 +1,5 @@
 /* Reset Geral e Variáveis */
+
 :root {
     --primary: #0f172a;
     --primary-light: #1e293b;
@@ -30,6 +31,7 @@ body {
 }
 
 /* Cabeçalho */
+
 .app-header {
     background-color: var(--primary);
     color: var(--white);
@@ -47,13 +49,13 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    overflow: hidden; 
 }
 
 .app-logo {
     height: 38px;
     width: auto;
     object-fit: contain;
-    border-radius: 15px;
 }
 
 .app-title {
@@ -85,6 +87,7 @@ body {
 }
 
 /* Hero Section */
+
 .hero {
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: var(--white);
