@@ -49,7 +49,8 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    overflow: hidden; 
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .app-logo {
@@ -134,6 +135,7 @@ body {
 }
 
 /* Containers da Estrutura */
+
 .container {
     padding: 4rem 5%;
     max-width: 1200px;
@@ -160,6 +162,7 @@ h2 {
 }
 
 /* Cards de Matérias com Features */
+
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -222,6 +225,7 @@ h2 {
 }
 
 /* Painel de Notas */
+
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -257,6 +261,7 @@ h2 {
 }
 
 /* Componente de Abas para Frequência */
+
 .freq-tabs {
     display: flex;
     justify-content: center;
@@ -282,6 +287,7 @@ h2 {
 }
 
 /* Lista / Grid de Frequência Diária */
+
 .timeline-frequencia {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -316,6 +322,7 @@ h2 {
 .falta .badge-status { background: #fee2e2; color: #991b1b; }
 
 /* Chat de Dúvidas */
+
 .chat-container {
     max-width: 650px;
     margin: 0 auto;
@@ -411,6 +418,7 @@ h2 {
 }
 
 /* Rodapé */
+
 .app-footer {
     text-align: center;
     padding: 2.5rem;
