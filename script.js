@@ -44,123 +44,112 @@ function filtrarFrequencia(categoria) {
     });
 }
 
-// Mecanismo Funcional do Chat de Mensagens
-function enviarMensagem() {
-    const input = document.getElementById("chatInputField");
-    const chatBox = document.getElementById("chatBox");
-    const textoMensagem = input.value.trim();
+// Base de Conhecimento Inteligente da IA (Tópicos Técnicos e Conversas Normais)
+const baseConhecimento = {
+    // === CONVERSAS NORMAIS / CASUAIS (SMALL TALK) ===
+    tudoBem: {
+        chaves: /\b(tudo bem|tudo bom|como voce esta|como vai|como estao as coisas|suave|beleza)\b/i,
+        resposta: "Tudo ótimo por aqui! Prontinho para codificar e tirar suas dúvidas. E com você, como estão os códigos?"
+    },
+    quemEvoce: {
+        chaves: /\b(quem e voce|quem e tu|seu nome|o que voce e|assistente)\b/i,
+        resposta: "Eu sou o assistente virtual do Prof. Lindo! Fui treinado para te ajudar com Node.js, Express e banco de dados enquanto ele corrige os trabalhos."
+    },
+    elogio: {
+        chaves: /\b(inteligente|legal|da hora|top|bom|otimo|incrivel|genio|lindo|gostei|perfeito)\b/i,
+        resposta: "Muito obrigado pelo elogio! 😄 Tento dar o meu melhor. O Prof. Lindo me estruturou muito bem!"
+    },
+    piada: {
+        chaves: /\b(piada|conta uma piada|engraçado|rir|descontrair)\b/i,
+        resposta: "Por que o desenvolvedor faliu? Porque ele gastou todo o seu dinheiro no *cache*! 🤣"
+    },
+    despedida: {
+        chaves: /\b(tchau|adeus|ate logo|fui|partiu|boa noite|ate amanha)\b/i,
+        resposta: "Até mais! Bons estudos por aí e lembre-se de dar um `git commit` antes de dormir!"
+    },
 
-    if (textoMensagem === "") return; // Impede o envio de caixas vazias
-
-    // Cria a estrutura visual da nova mensagem do aluno
-    const novaMensagem = document.createElement("div");
-    novaMensagem.className = "mensagem aluno";
-    novaMensagem.innerHTML = `
-        <span class="chat-name">Você</span>
-        <p>${textoMensagem}</p>
-    `;
-
-    // Adiciona e rola o scroll do chat para baixo automaticamente
-    chatBox.appendChild(novaMensagem);
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-    // Limpa o campo de texto
-    input.value = "";
-
-    // Simulação opcional de resposta automática do professor após 1.5 segundos
-    setTimeout(() => {
-        const respostaProfessor = document.createElement("div");
-        respostaProfessor.className = "mensagem professor";
-        respostaProfessor.innerHTML = `
-            <span class="chat-name">Suporte (Automático)</span>
-            <p>Recebi sua dúvida! Analisarei seu código e te respondo em breve.</p>
-        `;
-        chatBox.appendChild(respostaProfessor);
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }, 1500);
-}
-
-// Atalho para enviar mensagem pressionando a tecla 'Enter'
-function verificarTecla(event) {
-    if (event.key === "Enter") {
-        enviarMensagem();
+    // === MATÉRIAS E SUPORTE TÉCNICO ===
+    saudacoes: {
+        chaves: /\b(oi|ola|olá|bom dia|boa tarde|ajuda|hello|hey)\b/i,
+        resposta: "Olá! Sou o assistente inteligente do Prof. Lindo. Pode mandar sua dúvida sobre Node.js, Express, Bancos de Dados ou Git!"
+    },
+    bancoDados: {
+        chaves: /\b(banco|sql|conectar|database|postgres|mysql|sqlite|mongodb|sequelize|prisma)\b/i,
+        resposta: "Para conectar bancos SQL no Node, use ORMs como **Prisma** ou **Sequelize**. Eles gerenciam as conexões de forma segura. Você já configurou o arquivo `.env` com a string de conexão?"
+    },
+    rotasExpress: {
+        chaves: /\b(rota|rotas|get|post|put|delete|endpoint|express|app|middleware)\b/i,
+        resposta: "As rotas no Express usam métodos HTTP: `app.get()`, `app.post()`, `app.put()` e `app.delete()`. Lembre-se sempre de retornar uma resposta com `res.json()` ou `res.send()` para não travar a requisição!"
+    },
+    errosBugs: {
+        chaves: /\b(erro|bug|quebrou|travou|falha|crash|not found|undefined|null)\b/i,
+        resposta: "Eita! Erros comuns no Node geralmente envolvem esquecer o `await`, esquecer de importar um módulo ou portas ocupadas (EADDRINUSE). O que aparece no console do seu terminal?"
+    },
+    instalacaoNpm: {
+        chaves: /\b(instalar|package|npm|yarn|dependencies|modulo|modulos|package\.json)\b/i,
+        resposta: "Para instalar dependências, use `npm install <nome-do-pacote>` no terminal. Verifique se o arquivo `package.json` foi criado na raiz do seu projeto antes de rodar o comando."
+    },
+    variaveisAmbiente: {
+        chaves: /\b(env|dotenv|variavel|ambiente|seguranca|senha|token)\b/i,
+        resposta: "Variáveis de ambiente protegem dados sensíveis! Instale o pacote `dotenv` com `npm i dotenv`, crie um arquivo `.env` na raiz e acesse os dados no código usando `process.env.NOME_DA_VARIAVEL`."
+    },
+    arquiteturaCamadas: {
+        chaves: /\b(controller|service|model|mvc|arquitetura|pasta|pastas|estrutura)\b/i,
+        resposta: "Separar o projeto em camadas (MVC) ajuda muito! O **Model** cuida dos dados, o **Service** guarda as regras de negócio e o **Controller** lida com as requisições (req) e respostas (res)."
+    },
+    agradecimento: {
+        chaves: /\b(valeu|obrigado|obrigada|vlw|obg|deu certo|resolvido|funcionou)\b/i,
+        resposta: "Show de bola! Fico feliz em ajudar. Se surgir qualquer outra dúvida durante o desenvolvimento, é só chamar aqui!"
     }
-}
-
-// Banco de dados de respostas (Base de Conhecimento da IA)
-const bancoRespostas = [
-    {
-        palavrasChave: ["banco", "sql", "conectar", "database"],
-        resposta: "Para conectar um banco SQL no Node.js, você pode usar o **Sequelize** (ORM) ou o driver nativo **pg** (PostgreSQL) / **mysql2**. Você já instalou o pacote via npm?"
-    },
-    {
-        palavrasChave: ["rota", "rotas", "get", "post", "endpoint"],
-        resposta: "As rotas no Express são criadas usando `app.get('/rota', callback)` ou `app.post()`. Lembre-se de passar os parâmetros `req` e `res` na função!"
-    },
-    {
-        palavrasChave: ["erro", "bug", "funcionando", "quebrou"],
-        resposta: "Vixi! Dá uma olhada no terminal. Qual é a mensagem de erro exata que está aparecendo por aí?"
-    },
-    {
-        palavrasChave: ["oi", "olá", "bom dia", "boa tarde", "ajuda"],
-        resposta: "Olá! Sou o assistente do Prof. Lindo. Pode mandar sua dúvida sobre Node.js, Express ou Banco de Dados!"
-    }
-];
+};
 
 // Resposta padrão caso a IA não entenda
-const respostaPadrao = "Não consegui entender muito bem. Tente usar palavras como 'banco', 'rotas' ou 'erro' para eu te ajudar!";
+const respostaPadrao = "Não consegui identificar palavras-chave conhecidas. Tente perguntar sobre 'banco', 'rotas', 'erros' ou mande um 'tudo bem' para conversarmos!";
 
-// Função principal para enviar a mensagem do aluno
+// Função principal de envio
 function enviarMensagem() {
     const input = document.getElementById("chatInputField");
     const textoMensagem = input.value.trim();
 
     if (textoMensagem === "") return;
 
-    // 1. Renderiza a mensagem do aluno
+    // 1. Renderiza a mensagem do aluno na tela
     criarMensagemHTML(textoMensagem, "aluno", "Você");
-    input.value = ""; // Limpa o campo
+    input.value = ""; // Limpa a barra de digitação
 
-    // 2. Simula o "Digitando..." do Professor IA após 1 segundo
+    // 2. Processa e exibe a resposta da IA após 800ms
     setTimeout(() => {
         const respostaIA = processarRespostaIA(textoMensagem);
         criarMensagemHTML(respostaIA, "professor", "Prof. Lindo (IA)");
-    }, 1000);
+    }, 800);
 }
 
-// Função que busca a melhor resposta baseada em palavras-chave
+// Algoritmo de busca por RegEx (Varredura ultra veloz)
 function processarRespostaIA(mensagemUsuario) {
-    const mensagemMinuscula = mensagemUsuario.toLowerCase();
-
-    for (const item of bancoRespostas) {
-        // Verifica se alguma palavra-chave está contida na frase do usuário
-        const encontrouPalavra = item.palavrasChave.some(palavra => mensagemMinuscula.includes(palavra));
-        if (encontrouPalavra) {
-            return item.resposta;
+    for (const categoria in baseConhecimento) {
+        if (baseConhecimento[categoria].chaves.test(mensagemUsuario)) {
+            return baseConhecimento[categoria].resposta;
         }
     }
     return respostaPadrao;
 }
 
-// Função auxiliar para injetar a mensagem na tela e rolar o chat
+// Injeta as caixas de diálogo dinamicamente no HTML
 function criarMensagemHTML(texto, remetente, nomeExibicao) {
     const chatBox = document.getElementById("chatBox");
-
     const novaMensagem = document.createElement("div");
+    
     novaMensagem.className = `mensagem ${remetente}`;
-
     novaMensagem.innerHTML = `
         <span class="chat-name">${nomeExibicao}</span>
         <p>${texto}</p>
     `;
 
     chatBox.appendChild(novaMensagem);
-    
-    // Rola o chat para a última mensagem automaticamente
-    chatBox.scrollTop = chatBox.scrollHeight;
+    chatBox.scrollTop = chatBox.scrollHeight; // Rola o chat para baixo
 }
 
-// Permite enviar a mensagem ao pressionar "Enter"
+// Monitora o teclado para disparar o envio com o Enter
 function verificarTecla(event) {
     if (event.key === "Enter") {
         enviarMensagem();
