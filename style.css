@@ -51,7 +51,8 @@ body {
     gap: 12px;
     overflow: hidden;
     border-radius: 15px;
-    padding: 8px 16px;
+    width: 60px; 
+    height: 60px;
     background-color: #1a2f4c;
 }
 
